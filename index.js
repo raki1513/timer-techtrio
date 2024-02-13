@@ -1,89 +1,24 @@
-// Select HTML elements by their IDs and assign them to variables
-const day = document.getElementById("days");
-const hour = document.getElementById("hours");
-const min = document.getElementById("minutes");
-const sec = document.getElementById("seconds");
-
-// Select elements for flipping sheets and assign them to variables
 const dayFlip = document.getElementById("flip-sheet-day");
 const hourFlip = document.getElementById("flip-sheet-hour");
 const minFlip = document.getElementById("flip-sheet-min");
 const secFlip = document.getElementById("flip-sheet-sec");
 
-// Initialize countdown values
-let days = 0;
-let hours = 22;
-let minutes = 24;
-let seconds = 59;
+var second = 1000,
+      minute = second * 60,
+      hour = minute * 60,
+      day = hour * 24;
 
-// Function to display the day value with leading zero if less than 10
-const dayValue = () => {
-	if (days < 10) {
-		day.innerText = `0${days}`;
-	} else {
-		day.innerText = days;
-	}
-};
+var countDown = new Date('Feb 14, 2024 10:00:00').getTime(),
+    x = setInterval(function() {
 
-// Function to display the hour value with leading zero if less than 10
-const hourValue = () => {
-	if (hours < 10) {
-		hour.innerText = `0${hours}`;
-	} else {
-		hour.innerText = hours;
-	}
-};
+      var now = new Date().getTime(),
+          distance = countDown - now;
 
-// Function to display the minute value with leading zero if less than 10
-const minValue = () => {
-	if (minutes < 10) {
-		min.innerText = `0${minutes}`;
-	} else {
-		min.innerText = minutes;
-	}
-};
+      document.getElementById('days').innerText = Math.floor(distance / (day)),
+        document.getElementById('hours').innerText = Math.floor((distance % (day)) / (hour)),
+        document.getElementById('minutes').innerText = Math.floor((distance % (hour)) / (minute)),
+        document.getElementById('seconds').innerText = Math.floor((distance % (minute)) / second);}, second)
 
-// Function to display the second value with leading zero if less than 10
-const secValue = () => {
-	if (seconds < 10) {
-		sec.innerText = `0${seconds}`;
-	} else {
-		sec.innerText = seconds;
-	}
-};
-
-// Function to update the countdown timer and perform transitions
-const timer = () => {
-	dayValue();
-	hourValue();
-	minValue();
-	secValue();
-
-	seconds--;
-
-	if (seconds < 0 && minutes > 0) {
-		seconds = 59;
-		minutes--;
-		flip_anime(minFlip);
-	}
-
-	if (minutes <= 0 && hours > 0) {
-		minutes = 59;
-		hours--;
-		flip_anime(hourFlip);
-	}
-
-	if (hours <= 0 && days > 0) {
-		hours = 23;
-		days--;
-		flip_anime(dayFlip);
-	}
-
-	if (seconds < 0 && hours == 0 && minutes == 0 && days == 0) {
-		clearInterval(stopTimer);
-		clearInterval(stopAnime);
-	}
-};
 
 // Set an interval to run the timer function every 1000ms (1 second)
 const stopTimer = setInterval(timer, 1000);
