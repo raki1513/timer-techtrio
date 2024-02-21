@@ -8,7 +8,7 @@ var second = 1000,
       hour = minute * 60,
       day = hour * 24;
 
-var countDown = new Date('Feb 14, 2024 10:00:00').getTime(),
+var countDown = new Date('Feb 23, 2024 09:30:00').getTime(),
     x = setInterval(function() {
 
       var now = new Date().getTime(),

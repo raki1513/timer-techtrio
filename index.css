@@ -25,7 +25,7 @@ img {
 :root {
 	/* Colors */
 	--Grayish_blue: hsl(237, 18%, 59%);
-	--Soft_red: hsl(345, 95%, 68%);
+	--Soft_red: hsl(216, 95%, 68%);
 	--White: hsl(0, 0%, 100%);
 	--Dark_desaturated_blue: hsl(236, 21%, 26%);
 	--Very_dark_blue: hsl(235, 16%, 14%);
@@ -43,7 +43,7 @@ img {
 
 /* Font Styles */
 .heading {
-	font-size: var(--h-text);
+	font-size: 2rem;
 	color: var(--White);
 	letter-spacing: 0.5ch;
 	text-align: center;
@@ -74,8 +74,8 @@ main {
 
 .background {
 	background-color: var(--Very_dark_blue);
-	background-image: url(https://i.postimg.cc/rmwYwjnp/bg-stars.png),
-		url(https://i.postimg.cc/hGg5HcVT/pattern-hills.png);
+	background-image: url('./StockChart.svg');
+	background-size: cover;
 	background-position: top, bottom;
 	background-repeat: repeat-x;
 	background-size: 100% 75%, 100% 25%;
@@ -157,6 +157,7 @@ main {
 }
 
 .bottom {
+	height: 3vh;
 	align-self: end;
 	margin-bottom: 4em;
 	display: flex;
